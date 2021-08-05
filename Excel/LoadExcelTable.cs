@@ -58,7 +58,7 @@ public class LoadExcelTable : MonoBehaviour
         return vList;
     }
 
-    protected List<int> GetTime()
+    protected List<int> GetTime(int id)
     {
         if (data_Stage == null)
             data_Stage = CSVReader.Read("RunStageTable");
@@ -67,11 +67,12 @@ public class LoadExcelTable : MonoBehaviour
 
         for (int i = 0; i < data_Stage.Count; i++)
         {
-            if (data_Stage[i]["STAGE"].ToString().Equals("1"))
+            if (data_Stage[i]["ID"].ToString().Equals(id.ToString()))
             {
                 time.Add(int.Parse(data_Stage[i]["TIME"].ToString()));
             }
         }
+
         return time;
     }
 }
