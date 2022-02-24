@@ -1,0 +1,30 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class NPCTextTrigger : MonoBehaviour
+{
+    public string ChatText = "";
+    private GameObject NPC;
+
+    void Start()
+    {
+        NPC = GameObject.Find("NPC");
+    }
+
+    private void OnTriggerEnter(Collider collider)
+    {
+        if (collider.tag == "Player")
+        {
+            NPC.GetComponent<NPCTextView>().NPCChatEnter(ChatText);
+        }
+    }
+
+    private void OnTriggerExit(Collider collider)
+    {
+        if (collider.tag == "Player")
+        {
+            NPC.GetComponent<NPCTextView>().NPCChatExit();
+        }
+    }
+}
